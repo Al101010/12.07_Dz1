@@ -2,9 +2,8 @@ import orderByProps from '../myFunction';
 
 test('теститруем orderByProps', () => {
     const obj = {name: 'мечник', health: 10, level: 2, attack: 80, defence: 40}
-    const result = orderByProps(obj);
 
-    expect(result).toEqual(
+    expect(orderByProps(obj, ['name', 'level'])).toEqual(
         [
             {key: "name", value: "мечник"}, // порядок взят из массива с ключами
             {key: "level", value: 2}, // порядок взят из массива с ключами
@@ -13,4 +12,10 @@ test('теститруем orderByProps', () => {
             {key: "health", value: 10} // порядок по алфавиту (т.к. в массиве с ключами нет значения "health")
         ]
     );
+});
+
+test('теститруем orderByProps-Error', () => {
+    const obj = {name: 'мечник', health: 10, level: 2, attack: 80, defence: 40}
+
+    expect(orderByProps(obj, ['name', 'НЕТ в объекте'])).toThrow('в объекте НЕТ такого элемента');     
 });

@@ -1,4 +1,20 @@
-export default function orderByProps(obiect) {
-    const arr = Object.entries(obiect);
-    return [{key: arr[0][0], value: arr[0][1]}, {key: arr[2][0], value: arr[2][1]}, {key: arr[3][0], value: arr[3][1]},{key: arr[4][0], value: arr[4][1]}, {key: arr[1][0], value: arr[1][1]}]
+export default function orderByProps(object, sortirovka) {
+    const result = [];
+
+    sortirovka.forEach((elem) => {
+        if (elem in object) {
+            result.push({key: elem, value: object[elem]});
+        } else {
+            throw new Error('нет такого элемента');
+        }
+        
+    });
+
+    Object.keys(object).sort().forEach((elem) => {
+        if (!sortirovka.includes(elem)) {
+            result.push({key: elem, value: object[elem]});
+        }
+    });
+
+return result;
 }
