@@ -5,7 +5,7 @@ export default function orderByProps(object, sortirovka) {
         if (elem in object) {
             result.push({key: elem, value: object[elem]});
         } else {
-            throw new Error('нет такого элемента');
+            throw new Error('в объекте НЕТ такого элемента');
         }
         
     });
