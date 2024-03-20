@@ -17,5 +17,6 @@ test('теститруем orderByProps', () => {
 test('теститруем orderByProps-Error', () => {
     const obj = {name: 'мечник', health: 10, level: 2, attack: 80, defence: 40}
 
-    expect(orderByProps(obj, ['name', 'НЕТ в объекте'])).toThrow('в объекте НЕТ такого элемента');     
+    expect(() => orderByProps(obj, ['name', 'НЕТ в объекте'])).toThrow('в объекте НЕТ такого элемента'); // работает(вставил "() => " и всё заработало)
+    // expect(orderByProps(obj, ['name', 'НЕТ в объекте'])).toThrow('в объекте НЕТ такого элемента');    // не работает 
 });
